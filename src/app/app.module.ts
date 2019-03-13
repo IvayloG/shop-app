@@ -3,20 +3,24 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
-  IgxLayoutModule, IgxRippleModule,
-  IgxNavigationDrawerModule, IgxNavbarModule
-} from 'igniteui-angular';
+import { IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxAutocompleteModule, IgxDropDownModule, IgxInputGroupModule, IgxButtonModule, IgxChipsModule, IgxTabsModule, IgxCardModule, IgxAvatarModule } from 'igniteui-angular';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule, ExternalAuthService } from './authentication';
+import { SimpleAutocompleteComponent, SimpleAutocompletePipeStartsWith } from './simple-autocomplete/simple-autocomplete.component';
+import { ChipComponent } from './chip/chip.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SimpleAutocompleteComponent,
+    SimpleAutocompletePipeStartsWith,
+    ChipComponent,
+    TabsComponent
   ],
   imports: [
     FormsModule,
@@ -28,9 +32,17 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
     IgxNavigationDrawerModule,
     IgxNavbarModule,
     IgxLayoutModule,
-    IgxRippleModule
+    IgxRippleModule,
+    IgxAutocompleteModule,
+    IgxDropDownModule,
+    IgxInputGroupModule,
+    IgxButtonModule,
+    IgxChipsModule,
+    IgxTabsModule,
+    IgxCardModule,
+    IgxAvatarModule
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -46,5 +58,4 @@ export class AppModule {
 
     // this.externalAuthService.addFacebook('<CLIENT_ID>');
   }
-
 }
