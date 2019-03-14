@@ -1,12 +1,43 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+// $primary-color: #333;
+// $secondary-color: #fff;
+
+// $my-color-palette: igx-palette(
+//     $primary: $primary-color,
+//     $secondary: $secondary-color
+// );
+
+// $blue-palette: igx-palette($primary: #09f, $secondary: rgba(100, 207, 226, 0.705)) !default;
+$blue-palette: igx-palette($primary: rgb(107, 193, 250), $secondary:  rgb(107, 193, 250)) !default;
+
+// IMPORTANT: Make sure you always include igx-core first!
+@include igx-core();
+@include igx-dark-theme($blue-palette);
+
+.dark-theme {
+   background: #333;
+   color: #fff; //   color: rgb(77, 204, 221);
+
+ $igx-background-color: #333;
+ $igx-foreground-color: text-contrast($igx-background-color);
+
+ background: $igx-background-color;
+ color: $igx-foreground-color;
+
+}
+
+
 /* You can add global styles to this file, and also import other style files */
 // Standard CSS normalize, comment out if not required or using a different module
 @import "~minireset.css/minireset";
-	
 
 
 html, body {
   height: 100%;
+  background-color: lightgray;
 }
 .content p {
   margin: 15px;
 }
+
