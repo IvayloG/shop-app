@@ -2,13 +2,18 @@
   <igx-nav-drawer #nav id="project-menu" isOpen="true" [enableGestures]='true' width="280px">
     <ng-template igxDrawer>
       <span igxDrawerItem [isHeader]="true">Filters</span>
-      <span *ngFor="let route of topNavLinks" igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active"
-        routerLink="{{route.path}}">{{route.name}}</span>
+      <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="0" [maxValue]="1000" [isContinuous]=true
+        [(ngModel)]="priceRange">
+      </igx-slider>
+      <label igxLabel for="slider">Choose price range: {{priceRange.lower | currency}} -
+        {{priceRange.upper | currency}}</label>
     </ng-template>
   </igx-nav-drawer>
   <div class="main" igxFlex igxLayout igxLayoutDir="columns">
-    <igx-navbar title="shop" actionButtonIcon="menu" (onAction)="nav.toggle()">
-      <igx-buttongroup [multiSelection]="false" [values]="categories" [alignment]="alignment" (onSelect)="onCategorySelected($event)">
+    <igx-navbar title="Shop" actionButtonIcon="menu" (onAction)="nav.toggle()">
+      <span routerLink="" routerLinkActive="active">Home</span>
+      <igx-buttongroup [multiSelection]="false" [values]="categories" [alignment]="alignment"
+        (onSelect)="onCategorySelected($event)" (click)="onBtnGroupClick($event)">
       </igx-buttongroup>
       <app-login-bar></app-login-bar>
     </igx-navbar>

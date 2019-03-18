@@ -1,3 +1,4 @@
+import { ProductDetailsComponent } from './product/product-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -9,18 +10,32 @@ import { SimpleAutocompleteComponent } from './simple-autocomplete/simple-autoco
 import { ChipComponent } from './chip/chip.component';
 import { TabsComponent } from './tabs/tabs.component';
 
+import { ProductsViewComponent } from './products-view/products-view.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, data: { text: 'Home' } },
   { path: 'error', component: UncaughtErrorComponent },
+
+  // { path: 'IT', component: ProductsViewComponent }, //TODO pass selectedProduct to ProductsViewComponent
+
+  {
+    path: 'IT',
+    children: [
+      { path: '', component: ProductsViewComponent },
+      { path: ':id', component: ProductDetailsComponent }
+    ]
+  },
   { path: 'simple-autocomplete', component: SimpleAutocompleteComponent, data: { text: 'Simple Autocomplete' } },
-  { path: 'chip', component: ChipComponent, data: { text: 'Chip' } },
-  { path: 'tabs', component: TabsComponent, data: { text: 'Tabs' } },
+  // { path: 'chip', component: ChipComponent, data: { text: 'Chip' } },
+  // { path: 'tabs', component: TabsComponent, data: { text: 'Tabs' } },
+
+
   { path: '**', component: PageNotFoundComponent } // must always be last
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), ErrorRoutingModule],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true }), ErrorRoutingModule],
   exports: [RouterModule, ErrorRoutingModule]
 })
 export class AppRoutingModule {

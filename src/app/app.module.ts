@@ -1,9 +1,12 @@
+import { DataService } from './services/data.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxAutocompleteModule, IgxDropDownModule, IgxInputGroupModule, IgxButtonModule, IgxChipsModule, IgxTabsModule, IgxCardModule, IgxAvatarModule } from 'igniteui-angular';
+import { IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxAutocompleteModule,
+   IgxDropDownModule, IgxInputGroupModule, IgxButtonModule, IgxChipsModule, IgxTabsModule, IgxCardModule,
+   IgxAvatarModule, IgxButtonGroupModule, IgxIconModule, IgxSliderModule } from 'igniteui-angular';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +15,8 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
 import { SimpleAutocompleteComponent, SimpleAutocompletePipeStartsWith } from './simple-autocomplete/simple-autocomplete.component';
 import { ChipComponent } from './chip/chip.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { ProductsViewComponent } from './products-view/products-view.component';
+import { ProductDetailsComponent } from './product/product-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,9 @@ import { TabsComponent } from './tabs/tabs.component';
     SimpleAutocompleteComponent,
     SimpleAutocompletePipeStartsWith,
     ChipComponent,
-    TabsComponent
+    TabsComponent,
+    ProductsViewComponent,
+    ProductDetailsComponent
   ],
   imports: [
     FormsModule,
@@ -40,9 +47,12 @@ import { TabsComponent } from './tabs/tabs.component';
     IgxChipsModule,
     IgxTabsModule,
     IgxCardModule,
-    IgxAvatarModule
+    IgxAvatarModule,
+    IgxButtonGroupModule,
+    IgxIconModule,
+    IgxSliderModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
