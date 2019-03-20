@@ -1,6 +1,6 @@
 import { DataService } from './../services/data.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SliderType } from 'igniteui-angular';
+import { SliderType, IChangeCheckboxEventArgs } from 'igniteui-angular';
 class PriceRange {
   constructor(
     public lower: number,
@@ -23,6 +23,7 @@ export class ProductsViewComponent implements OnInit {
   public colors;
   public promotions;
   objectKeys = Object.keys;
+  public userFilters = [];
 
   constructor(private data: DataService) {
   }
@@ -42,6 +43,17 @@ export class ProductsViewComponent implements OnInit {
 
   public showProductDetails() {
     // routing --> navigate to product component
+  }
+
+  onCheckboxChange(event: IChangeCheckboxEventArgs) {
+    event.checked ? this.userFilters.push(event.checkbox.name) :
+      this.userFilters = this.userFilters.filter(x => x !== event.checkbox.name);
+
+    this.applyFilters(this.userFilters);
+  }
+
+  applyFilters(userFilters: string[]): any {
+    userFilters.forEach(elem => this.categoryProductsData.filter(x => x.contains(elem)));
   }
 }
 

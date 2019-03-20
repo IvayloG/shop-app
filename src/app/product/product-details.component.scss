@@ -1,0 +1,45 @@
+
+.prod-details-wrap {
+  display: flex;
+  flex-direction: row;
+  max-width: 600px;
+  margin: 50px;
+}
+
+.prod-details-left {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 50%;
+}
+
+.prod-details-right {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 50%;
+}
+
+.prod-details-main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+}
+
+.igx-input-group__label {
+  position: relative;
+  // margin: 10px 0px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+div.prod-details-main > label,
+div.prod-details-main > span,
+div.prod-details-main > igx-icon {
+  margin: 10px 0px;
+}
+
+.shipping-wrap {
+  text-align: center;
+  color: #0375be;
+}

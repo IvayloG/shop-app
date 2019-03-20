@@ -15,7 +15,7 @@
         <div class="filters-wrapper-inner">
           <div class="filter-component" *ngFor="let filterGroup of filterGroups; index as i">
             <label class="filter-label" igxLabel *ngFor="let key of objectKeys(filterGroup)">{{key}}</label>
-            <igx-checkbox *ngFor="let filter of this.filterGroups[i][objectKeys(filterGroup)]">
+            <igx-checkbox [name]="filter" *ngFor="let filter of this.filterGroups[i][objectKeys(filterGroup)]" (change)="onCheckboxChange($event)">
               {{filter}}
             </igx-checkbox>
           </div>

@@ -240,14 +240,21 @@ export class DataService {
       availableFilters.push(product.filters);
     });
 
-    const brandsArr = availableFilters.map((filter, i) => filter[0].brand);
-    const colorsArr = availableFilters.map((filter, i) => filter[1].color);
-    const promosArr = availableFilters.map((filter, i) => filter[2].promotion);
+    let brandsArr = availableFilters.map((filter, i) => filter[0].brand);
+    let colorsArr = availableFilters.map((filter, i) => filter[1].color);
+    let promosArr = availableFilters.map((filter, i) => filter[2].promotion);
 
-    const uniqueBrandsArr = Array.from(new Set(brandsArr));
-    const uniqueColorsArr = Array.from(new Set(colorsArr));
-    const uniquePromosArr = Array.from(new Set(promosArr));
-    uniqueFilters.push({Brands: uniqueBrandsArr}, {Colors: uniqueColorsArr}, {Offers: uniquePromosArr});
+    // const uniqueBrandsArr = Array.from(new Set(brandsArr));
+    // const uniqueColorsArr = Array.from(new Set(colorsArr));
+    // const uniquePromosArr = Array.from(new Set(promosArr));
+    // uniqueFilters.push({Brands: uniqueBrandsArr}, {Colors: uniqueColorsArr}, {Offers: uniquePromosArr});
+
+    // x --> item in array i --> index of item a --> array reference ("brandsArr")
+    brandsArr = brandsArr.filter((brand, i, a) => a.indexOf(brand) === i);
+    colorsArr = colorsArr.filter((color, i, a) => a.indexOf(color) === i);
+    promosArr = promosArr.filter((promo, i, a) => a.indexOf(promo) === i);
+
+    uniqueFilters.push({Brands: brandsArr}, {Colors: colorsArr}, {Offers: promosArr});
     return uniqueFilters;
   }
 
