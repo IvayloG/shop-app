@@ -26,12 +26,10 @@
 
 .igx-input-group__label {
   position: relative;
-  // margin: 10px 0px;
   font-size: 1.5rem;
   text-transform: uppercase;
   text-align: center;
 }
-
 
 div.prod-details-main > label,
 div.prod-details-main > span,
@@ -42,4 +40,55 @@ div.prod-details-main > igx-icon {
 .shipping-wrap {
   text-align: center;
   color: #0375be;
+}
+
+.spec {
+  color: #6bc1fa;
+  text-transform: capitalize;
+}
+
+.igx-list__item-content, .igx-list__item-content:active {
+  // display: flex;
+  // position: relative;
+  // flex-flow: row wrap;
+  // padding: 0.5rem 1rem;
+  // min-height: 3rem;
+  // color: rgba(255, 255, 255, 0.74);
+  // background-color: #222;
+  // z-index: 2;
+  // border-radius: 0px;
+}
+
+
+
+//reviews
+igx-icon {
+  cursor: pointer;
+}
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact {
+  display: flex;
+  flex: 1 0 240px;
+  align-items: center;
+
+  &__info {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 24px;
+  }
+}
+
+.name {
+  font-weight: 600;
+}
+
+.review {
+  font-size: 0.875em;
+  line-height: 1;
 }

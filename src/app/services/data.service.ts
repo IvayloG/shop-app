@@ -1,3 +1,4 @@
+
 // ['laptops', 'GamingPC', 'Monitors', 'PC']
 
 export class DataService {
@@ -92,6 +93,7 @@ export class DataService {
     }];
   dummyProducts = [
     {
+      id: 1,
       category: 'IT',
       productName: 'smartwatch1',
       productSKU: 'sw1',
@@ -126,9 +128,47 @@ export class DataService {
         burnedCalories: true,
         weight: '46 g',
         dimension: '46.5X46.5X10.6 mm'
-      }
+      },
+      reviews: [
+        {
+          isFavorite: true,
+          name: "Terrance Orta",
+          phone: "770-504-2217",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/men/27.jpg",
+          review: 'Ooohh very cool'
+        },
+        {
+          isFavorite: true,
+          name: "Richard Mahoney",
+          phone: "423-676-2869",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/men/1.jpg",
+          review: 'Must buy'
+        },
+        {
+          isFavorite: true,
+          name: "Donna Price",
+          phone: "859-496-2817",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/50.jpg",
+          review: 'Cant live without it!!'
+        },
+        {
+          isFavorite: true,
+          name: "Lisa Landers",
+          phone: "901-747-3428",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/3.jpg",
+          review: 'Bought 5..my dog wears one as well'
+        },
+        {
+          isFavorite: false,
+          name: "Dorothy H. Spencer",
+          phone: "573-394-9254",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/67.jpg",
+          review: 'Pff they had stolen it on the street..Will buy another though'
+        }
+      ]
     },
     {
+      id: 2,
       category: 'IT',
       productName: 'smartwatch2',
       productSKU: 'sw2',
@@ -163,9 +203,47 @@ export class DataService {
         burnedCalories: true,
         weight: '46 g',
         dimension: '46.5X46.5X10.6 mm'
-      }
+      },
+      reviews: [
+        {
+          isFavorite: true,
+          name: "Terrance Orta",
+          phone: "770-504-2217",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/men/27.jpg",
+          review: 'Ooohh very cool'
+        },
+        {
+          isFavorite: true,
+          name: "Richard Mahoney",
+          phone: "423-676-2869",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/men/1.jpg",
+          review: 'Must buy'
+        },
+        {
+          isFavorite: true,
+          name: "Donna Price",
+          phone: "859-496-2817",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/50.jpg",
+          review: 'Cant live without it!!'
+        },
+        {
+          isFavorite: true,
+          name: "Lisa Landers",
+          phone: "901-747-3428",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/3.jpg",
+          review: 'Bought 5..my dog wears one as well'
+        },
+        {
+          isFavorite: false,
+          name: "Dorothy H. Spencer",
+          phone: "573-394-9254",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/67.jpg",
+          review: 'Pff they had stolen it on the street..Will buy another though'
+        }
+      ]
     },
     {
+      id: 3,
       category: 'IT',
       productName: 'smartwatch3',
       productSKU: 'sw3',
@@ -200,7 +278,44 @@ export class DataService {
         burnedCalories: true,
         weight: '46 g',
         dimension: '46.5X46.5X10.6 mm'
-      }
+      },
+      reviews: [
+        {
+          isFavorite: true,
+          name: "Terrance Orta",
+          phone: "770-504-2217",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/men/27.jpg",
+          review: 'Ooohh very cool'
+        },
+        {
+          isFavorite: true,
+          name: "Richard Mahoney",
+          phone: "423-676-2869",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/men/1.jpg",
+          review: 'Must buy'
+        },
+        {
+          isFavorite: true,
+          name: "Donna Price",
+          phone: "859-496-2817",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/50.jpg",
+          review: 'Cant live without it!!'
+        },
+        {
+          isFavorite: true,
+          name: "Lisa Landers",
+          phone: "901-747-3428",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/3.jpg",
+          review: 'Bought 5..my dog wears one as well'
+        },
+        {
+          isFavorite: false,
+          name: "Dorothy H. Spencer",
+          phone: "573-394-9254",
+          photo: "https://www.infragistics.com/angular-demos/assets/images/women/67.jpg",
+          review: 'Pff they had stolen it on the street..Will buy another though'
+        }
+      ]
     }
   ];
 
@@ -259,6 +374,22 @@ export class DataService {
   }
 
 
+
+public getProductByID(id: number): object {
+  return this.dummyProducts.filter(x => x.id === id)[0];
+}
+
+// public getProductReviewsByID(id: number): Array<T> {
+
+// }
+
+public getProductBySKU() {
+  //throw notImplemented();
+}
+
+public getProductByName() {
+ // throw notImplemented();
+}
 
 
 
