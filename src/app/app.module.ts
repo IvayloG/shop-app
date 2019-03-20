@@ -5,8 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxAutocompleteModule,
-   IgxDropDownModule, IgxInputGroupModule, IgxButtonModule, IgxChipsModule, IgxTabsModule, IgxCardModule,
-   IgxAvatarModule, IgxButtonGroupModule, IgxIconModule, IgxSliderModule } from 'igniteui-angular';
+   IgxDropDownModule,
+   IgxInputGroupModule, IgxButtonModule, IgxChipsModule, IgxTabsModule, IgxCardModule,
+   IgxAvatarModule, IgxButtonGroupModule, IgxIconModule, IgxSliderModule, IgxCheckboxModule } from 'igniteui-angular';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -50,7 +51,8 @@ import { ProductDetailsComponent } from './product/product-details.component';
     IgxAvatarModule,
     IgxButtonGroupModule,
     IgxIconModule,
-    IgxSliderModule
+    IgxSliderModule,
+    IgxCheckboxModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

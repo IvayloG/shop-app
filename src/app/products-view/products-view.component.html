@@ -1,27 +1,48 @@
 <div class="layout-box" igxLayout igxLayoutDir="row">
-    <div class="layout-box__el" igxFlex *ngFor="let product of categoryProductsData">
-        <igx-card (click)="showProductDetails(product.productSKU)">
-            <div class="overflow-hidden">
-                <img maxWidth="100%" maxHeight="100%" height="auto" [src]="product.imageUrl">
-            </div>
-            <igx-card-header>
-                <h3 class="igx-card-header__title">{{ product.productName }}</h3>
-                <h5 class="igx-card-header__subtitle">{{ product.price }}</h5>
-            </igx-card-header>
-            <igx-card-content>
-                <p class="igx-card-content__text">{{ product.shortDescription }}</p>
-            </igx-card-content>
-            <igx-card-actions>
-                <div class="igx-card-actions__igroup--end">
-                    <span igxButton="icon" igxRipple igxRippleCentered="true" *ngFor="let icon of product.icons">
-                        <igx-icon fontSet="material">{{icon}}</igx-icon>
-                    </span>
-                </div>
-            </igx-card-actions>
-        </igx-card>
-    </div>
 
-    <!-- <div class="layout-box__el" igxFlex>1</div>
+  <igx-nav-drawer #nav id="filter-menu" isOpen="true" [enableGestures]='true' width="280px" [isOpen]="true">
+    <ng-template igxDrawer>
+      <span igxDrawerItem [isHeader]="true">Filters</span>
+      <label igxLabel>Price</label>
+      <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="0" [maxValue]="1000" [isContinuous]=true
+        [(ngModel)]="priceRange">
+      </igx-slider>
+      <label igxLabel for="slider">Choose price range: {{priceRange.lower | currency}} -
+        {{priceRange.upper | currency}}</label>
+      <div class="filter-component" *ngFor="let filterGroup of filterGroups; index as i">
+        <label igxLabel *ngFor="let key of objectKeys(filterGroup)" >{{key}}</label>
+        <span *ngFor="let filter of this.filterGroups[i][objectKeys(filterGroup)]">
+          <igx-checkbox>
+            {{filter}}
+          </igx-checkbox>
+        </span>
+      </div>
+    </ng-template>
+  </igx-nav-drawer>
+
+  <div class="layout-box__el" igxFlex *ngFor="let product of categoryProductsData">
+    <igx-card (click)="showProductDetails(product.productSKU)">
+      <div class="overflow-hidden">
+        <img maxWidth="100%" maxHeight="100%" height="auto" [src]="product.imageUrl">
+      </div>
+      <igx-card-header>
+        <h3 class="igx-card-header__title">{{ product.productName }}</h3>
+        <h5 class="igx-card-header__subtitle">{{ product.price }}</h5>
+      </igx-card-header>
+      <igx-card-content>
+        <p class="igx-card-content__text">{{ product.shortDescription }}</p>
+      </igx-card-content>
+      <igx-card-actions>
+        <div class="igx-card-actions__igroup--end">
+          <span igxButton="icon" igxRipple igxRippleCentered="true" *ngFor="let icon of product.icons">
+            <igx-icon fontSet="material">{{icon}}</igx-icon>
+          </span>
+        </div>
+      </igx-card-actions>
+    </igx-card>
+  </div>
+
+  <!-- <div class="layout-box__el" igxFlex>1</div>
     <div class="layout-box__el" igxFlex>2</div>
     <div class="layout-box__el" igxFlex>3</div> -->
 </div>

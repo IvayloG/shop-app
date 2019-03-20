@@ -7,7 +7,6 @@ import { PageNotFoundComponent } from './error-routing/not-found/not-found.compo
 import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';
 import { ErrorRoutingModule } from './error-routing/error-routing.module';
 import { SimpleAutocompleteComponent } from './simple-autocomplete/simple-autocomplete.component';
-import { ChipComponent } from './chip/chip.component';
 import { TabsComponent } from './tabs/tabs.component';
 
 import { ProductsViewComponent } from './products-view/products-view.component';
@@ -35,7 +34,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true }), ErrorRoutingModule],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false }), ErrorRoutingModule],
   exports: [RouterModule, ErrorRoutingModule]
 })
 export class AppRoutingModule {

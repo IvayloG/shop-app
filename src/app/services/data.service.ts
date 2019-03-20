@@ -60,7 +60,7 @@ export class DataService {
           }]
         },
         {
-          name: 'PHONES & TABLETS',
+          name: 'PHONES&TABLETS',
           subcategory: [
             {
               name: 'phones',
@@ -95,12 +95,15 @@ export class DataService {
       category: 'IT',
       productName: 'smartwatch1',
       productSKU: 'sw1',
-      color: 'black',
       price: 99.99,
       imageUrl: '../../assets/products/images/smartwatch-1.jpg',
       shortDescription: 'the quick brown fox jumped over the lazy dog',
       icons: ['favorite', 'bookmark', 'share'],
-      brand: 'Earth corp.',
+      filters: [
+        { brand: 'Earth corp.' },
+        { color: 'black' },
+        { promotion: 'Hot Sale' }
+      ],
       features: {
         model: 'first-ever barely works',
         OS: 'Tizen OS 4.0',
@@ -110,7 +113,7 @@ export class DataService {
         processor: 'Dual core',
         displayType: 'AMOLED touchscreen',
         displaySize: '3.5 CM',
-        resolution:	'454X454',
+        resolution: '454X454',
         memoryCardSlot: '',
         GPS: true,
         bluetooth: 'Bluetooth 4.2',
@@ -129,12 +132,15 @@ export class DataService {
       category: 'IT',
       productName: 'smartwatch2',
       productSKU: 'sw2',
-      color: 'black',
       price: 99.99,
       imageUrl: '../../assets/products/images/smartwatch-2.jpg',
       shortDescription: 'the quick brown fox jumped over the lazy dog',
       icons: ['favorite', 'bookmark', 'share'],
-      brand: 'Great corp.',
+      filters: [
+        { brand: 'Great corp' },
+        { color: 'black' },
+        { promotion: 'Limited' }
+      ],
       features: {
         model: 'first-ever barely works',
         OS: 'Tizen OS 4.0',
@@ -144,7 +150,7 @@ export class DataService {
         processor: 'Dual core',
         displayType: 'Super AMOLED',
         displaySize: '3.5 CM',
-        resolution:	'454X454',
+        resolution: '454X454',
         memoryCardSlot: '',
         GPS: true,
         bluetooth: 'Bluetooth 4.2',
@@ -163,12 +169,15 @@ export class DataService {
       category: 'IT',
       productName: 'smartwatch3',
       productSKU: 'sw3',
-      color: 'white',
       price: 99.99,
       imageUrl: '../../assets/products/images/smartwatch-3.jpg',
       shortDescription: 'the quick brown fox jumped over the lazy dog',
       icons: ['favorite', 'bookmark', 'share'],
-      brand: 'Mars corp.',
+      filters: [
+        { brand: 'Mars corp.' },
+        { color: 'white' },
+        { promotion: 'Days offer' }
+      ],
       features: {
         model: 'state-of-art',
         OS: 'Tizen OS 5.0',
@@ -178,7 +187,7 @@ export class DataService {
         processor: 'Tripple core',
         displayType: 'Giga AMOLED',
         displaySize: '4.2 CM',
-        resolution:	'554X554',
+        resolution: '554X554',
         memoryCardSlot: '',
         GPS: true,
         bluetooth: 'Bluetooth 4.2',
@@ -196,9 +205,9 @@ export class DataService {
   ];
 
   public GetITProducts() {
-   // let categoryData = this.data.filter(x => x.category.keys.name === 'IT');
-  //  let categoryData = this.data.filter(x => x.category.name === 'IT');
-  //   console.log(JSON.stringify(categoryData));
+    // let categoryData = this.data.filter(x => x.category.keys.name === 'IT');
+    //  let categoryData = this.data.filter(x => x.category.name === 'IT');
+    //   console.log(JSON.stringify(categoryData));
     //$log.debug(angular.toJson(categoryData, true));
 
   }
@@ -216,7 +225,57 @@ export class DataService {
   }
 
   public getFilteredProductCategory(filteredProduct: string) {
-    const category =  this.dummyProducts.filter(product => product.productName ===  filteredProduct).map(x => x.category);
+    const category = this.dummyProducts.filter(product => product.productName === filteredProduct).map(x => x.category);
     return category[0];
   }
+
+  public getFiltersForProductCategory(category: string): any {
+    const filters = [];
+    const productsByCategory = this.getDummyData().filter(cat => cat.category === category);
+    filters.push(productsByCategory);
+
+    const availableFilters = [];
+    const uniqueFilters = [];
+    productsByCategory.forEach((product, index) => {
+      availableFilters.push(product.filters);
+    });
+
+    const brandsArr = availableFilters.map((filter, i) => filter[0].brand);
+    const colorsArr = availableFilters.map((filter, i) => filter[1].color);
+    const promosArr = availableFilters.map((filter, i) => filter[2].promotion);
+    //uniqueFilters.push(brands, colors, promos);
+    uniqueFilters.push({brands: brandsArr}, {colors: colorsArr}, {promos: promosArr});
+    return uniqueFilters;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  // Temp
+  // public getFiltersForProductCategory(category: string): any {
+  //   const filters = ['brand', 'color', 'promotion'];
+  //   return filters;
+  // }
+
+  // public getBrands () {
+  //   const brands = ['a', 'b', 'c', 'd'];
+  //   return brands;
+  // }
+
+  // public getColors () {
+  //   const colors = ['1', '2', '3', '4'];
+  //   return colors;
+  // }
+
+  // public getPromotions () {
+  //   const promotions = ['Hot Sale', 'Days offer', 'Limited'];
+  //   return promotions;
+  // }
 }

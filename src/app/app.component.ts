@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import { routes } from './app-routing.module';
 
 import { IgxNavigationDrawerComponent, ButtonGroupAlignment, IButtonGroupEventArgs,
-  IgxButtonGroupComponent, SliderType } from 'igniteui-angular';
+  IgxButtonGroupComponent } from 'igniteui-angular';
 interface IButton {
   ripple?: string;
   label?: string;
@@ -17,14 +17,6 @@ interface IButton {
   icon?: string;
 }
 
-
-class PriceRange {
-  constructor(
-    public lower: number,
-    public upper: number,
-  ) {
-  }
-}
 
 class Button {
   private ripple: string;
@@ -54,6 +46,7 @@ class Button {
 export class AppComponent implements OnInit {
   public alignment = ButtonGroupAlignment.horizontal;
   public categories;
+
   public data: {
     category: {
       name: string,
@@ -68,8 +61,6 @@ export class AppComponent implements OnInit {
     }[]
   }[] = [];
 
-  public sliderType = SliderType;
-  public priceRange: PriceRange;
 
   public topNavLinks: Array<{
     path: string,
@@ -80,7 +71,7 @@ export class AppComponent implements OnInit {
 private buttonGroup: IgxButtonGroupComponent;
 
 
-  constructor(private router: Router, private shopData: DataService) {
+  constructor(public router: Router, private shopData: DataService) {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -122,8 +113,6 @@ private buttonGroup: IgxButtonGroupComponent;
         // })
     ];
 
-    // initialize - set slider default range
-    this.priceRange = new PriceRange(200, 800);
   }
 
   public onCategorySelected(event: IButtonGroupEventArgs) {
@@ -133,7 +122,8 @@ private buttonGroup: IgxButtonGroupComponent;
 
   public onBtnGroupClick(event: MouseEvent) {
     // event.srcElement.textContent    =='IT'  //pass to data service?
-    this.router.navigateByUrl('IT');
-
+    // this.filters = this.shopData.getFiltersForProductCategory(event.srcElement.textContent);
+    this.router.navigateByUrl(event.srcElement.textContent);
+    //this.router.navigateByUrl('IT');
   }
 }
