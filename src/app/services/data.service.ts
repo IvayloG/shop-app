@@ -243,8 +243,11 @@ export class DataService {
     const brandsArr = availableFilters.map((filter, i) => filter[0].brand);
     const colorsArr = availableFilters.map((filter, i) => filter[1].color);
     const promosArr = availableFilters.map((filter, i) => filter[2].promotion);
-    //uniqueFilters.push(brands, colors, promos);
-    uniqueFilters.push({brands: brandsArr}, {colors: colorsArr}, {promos: promosArr});
+
+    const uniqueBrandsArr = Array.from(new Set(brandsArr));
+    const uniqueColorsArr = Array.from(new Set(colorsArr));
+    const uniquePromosArr = Array.from(new Set(promosArr));
+    uniqueFilters.push({brands: uniqueBrandsArr}, {colors: uniqueColorsArr}, {promos: uniquePromosArr});
     return uniqueFilters;
   }
 
