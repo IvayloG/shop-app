@@ -176,7 +176,7 @@ export class DataService {
       filters: [
         { brand: 'Mars corp.' },
         { color: 'white' },
-        { promotion: 'Days offer' }
+        { promotion: 'Today\'s offer' }
       ],
       features: {
         model: 'state-of-art',
@@ -247,7 +247,7 @@ export class DataService {
     const uniqueBrandsArr = Array.from(new Set(brandsArr));
     const uniqueColorsArr = Array.from(new Set(colorsArr));
     const uniquePromosArr = Array.from(new Set(promosArr));
-    uniqueFilters.push({brands: uniqueBrandsArr}, {colors: uniqueColorsArr}, {promos: uniquePromosArr});
+    uniqueFilters.push({Brands: uniqueBrandsArr}, {Colors: uniqueColorsArr}, {Offers: uniquePromosArr});
     return uniqueFilters;
   }
 
@@ -278,7 +278,7 @@ export class DataService {
   // }
 
   // public getPromotions () {
-  //   const promotions = ['Hot Sale', 'Days offer', 'Limited'];
+  //   const promotions = ['Hot Sale', 'Today\'s offer', 'Limited'];
   //   return promotions;
   // }
 }

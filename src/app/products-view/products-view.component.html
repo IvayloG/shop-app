@@ -3,19 +3,23 @@
   <igx-nav-drawer #nav id="filter-menu" isOpen="true" [enableGestures]='true' width="280px" [isOpen]="true">
     <ng-template igxDrawer>
       <span igxDrawerItem [isHeader]="true">Filters</span>
-      <label igxLabel>Price</label>
-      <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="0" [maxValue]="1000" [isContinuous]=true
-        [(ngModel)]="priceRange">
-      </igx-slider>
-      <label igxLabel for="slider">Choose price range: {{priceRange.lower | currency}} -
-        {{priceRange.upper | currency}}</label>
-      <div class="filter-component" *ngFor="let filterGroup of filterGroups; index as i">
-        <label igxLabel *ngFor="let key of objectKeys(filterGroup)" >{{key}}</label>
-        <span *ngFor="let filter of this.filterGroups[i][objectKeys(filterGroup)]">
-          <igx-checkbox>
-            {{filter}}
-          </igx-checkbox>
-        </span>
+      <div class="filters-wrapper">
+        <div class="slide-wrapper">
+          <label igxLabel class="filter-label">Price</label>
+          <igx-slider id="slider" [type]="sliderType.RANGE" [minValue]="0" [maxValue]="1000" [isContinuous]=true
+            [(ngModel)]="priceRange">
+          </igx-slider>
+          <label igxLabel for="slider">Price range: {{priceRange.lower | currency}} -
+            {{priceRange.upper | currency}}</label>
+        </div>
+        <div class="filters-wrapper-inner">
+          <div class="filter-component" *ngFor="let filterGroup of filterGroups; index as i">
+            <label class="filter-label" igxLabel *ngFor="let key of objectKeys(filterGroup)">{{key}}</label>
+            <igx-checkbox *ngFor="let filter of this.filterGroups[i][objectKeys(filterGroup)]">
+              {{filter}}
+            </igx-checkbox>
+          </div>
+        </div>
       </div>
     </ng-template>
   </igx-nav-drawer>

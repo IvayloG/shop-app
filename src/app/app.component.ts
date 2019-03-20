@@ -72,28 +72,28 @@ private buttonGroup: IgxButtonGroupComponent;
 
 
   constructor(public router: Router, private shopData: DataService) {
-    for (const route of routes) {
-      if (route.path && route.data && route.path.indexOf('*') === -1) {
-        this.topNavLinks.push({
-          name: route.data.text,
-          path: '/' + route.path
-        });
-      }
-    }
+    // for (const route of routes) {
+    //   if (route.path && route.data && route.path.indexOf('*') === -1) {
+    //     this.topNavLinks.push({
+    //       name: route.data.text,
+    //       path: '/' + route.path
+    //     });
+    //   }
+    // }
   }
 
   public ngOnInit(): void {
     this.data = this.shopData.data;
 
-    this.router.events.pipe(
-      filter((x) => x instanceof NavigationStart)
-    )
-      .subscribe((event: NavigationStart) => {
-          if (event.url !== '/' && !this.navdrawer.pin) {
-              // Close drawer when selecting a view on mobile (unpinned)
-              this.navdrawer.close();
-          }
-      });
+    // this.router.events.pipe(
+    //   filter((x) => x instanceof NavigationStart)
+    // )
+    //   .subscribe((event: NavigationStart) => {
+    //       if (event.url !== '/' && !this.navdrawer.pin) {
+    //           // Close drawer when selecting a view on mobile (unpinned)
+    //           this.navdrawer.close();
+    //       }
+    //   });
 
 
       this.categories = [
