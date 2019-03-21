@@ -98,7 +98,7 @@ export class DataService {
       productName: 'smartwatch1',
       productSKU: 'sw1',
       price: 99.99,
-      imageUrl: '../../assets/products/images/smartwatch-1.jpg',
+      imageUrl: '../../assets/products/images/smartwatch-3.jpg',
       shortDescription: 'the quick brown fox jumped over the lazy dog',
       icons: ['favorite', 'bookmark', 'share'],
       filters: [
@@ -172,8 +172,8 @@ export class DataService {
       category: 'IT',
       productName: 'smartwatch2',
       productSKU: 'sw2',
-      price: 99.99,
-      imageUrl: '../../assets/products/images/smartwatch-2.jpg',
+      price: 199.99,
+      imageUrl: '../../assets/products/images/smartwatch-4.jpg',
       shortDescription: 'the quick brown fox jumped over the lazy dog',
       icons: ['favorite', 'bookmark', 'share'],
       filters: [
@@ -247,8 +247,8 @@ export class DataService {
       category: 'IT',
       productName: 'smartwatch3',
       productSKU: 'sw3',
-      price: 99.99,
-      imageUrl: '../../assets/products/images/smartwatch-3.jpg',
+      price: 399.99,
+      imageUrl: '../../assets/products/images/smartwatch-5.jpg',
       shortDescription: 'the quick brown fox jumped over the lazy dog',
       icons: ['favorite', 'bookmark', 'share'],
       filters: [

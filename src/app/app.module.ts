@@ -16,7 +16,7 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
 import { SimpleAutocompleteComponent, SimpleAutocompletePipeStartsWith } from './simple-autocomplete/simple-autocomplete.component';
 import { ChipComponent } from './chip/chip.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { ProductsViewComponent } from './products-view/products-view.component';
+import { ProductsViewComponent, BrandPipe, MyFlatPipe } from './products-view/products-view.component';
 import { ProductDetailsComponent } from './product/product-details.component';
 
 @NgModule({
@@ -28,7 +28,9 @@ import { ProductDetailsComponent } from './product/product-details.component';
     ChipComponent,
     TabsComponent,
     ProductsViewComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BrandPipe,
+    MyFlatPipe
   ],
   imports: [
     FormsModule,

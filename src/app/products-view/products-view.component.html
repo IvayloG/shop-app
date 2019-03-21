@@ -15,7 +15,8 @@
         <div class="filters-wrapper-inner">
           <div class="filter-component" *ngFor="let filterGroup of filterGroups; index as i">
             <label class="filter-label" igxLabel *ngFor="let key of objectKeys(filterGroup)">{{key}}</label>
-            <igx-checkbox [name]="filter" *ngFor="let filter of this.filterGroups[i][objectKeys(filterGroup)]" (change)="onCheckboxChange($event)">
+            <igx-checkbox [name]="filter" *ngFor="let filter of this.filterGroups[i][objectKeys(filterGroup)]"
+            (change)="onCheckboxChange($event)">
               {{filter}}
             </igx-checkbox>
           </div>
@@ -24,7 +25,7 @@
     </ng-template>
   </igx-nav-drawer>
 
-  <div class="layout-box__el" igxFlex *ngFor="let product of categoryProductsData">
+  <div class="layout-box__el" igxFlex *ngFor="let product of categoryProductsData | flatFilter | brandFilter:filterargs">
     <igx-card (click)="showProductDetails(product.productSKU)">
       <div class="overflow-hidden">
         <img maxWidth="100%" maxHeight="100%" height="auto" [src]="product.imageUrl">

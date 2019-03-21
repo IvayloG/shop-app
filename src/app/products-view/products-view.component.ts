@@ -1,5 +1,5 @@
 import { DataService } from './../services/data.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { SliderType, IChangeCheckboxEventArgs } from 'igniteui-angular';
 class PriceRange {
   constructor(
@@ -8,6 +8,38 @@ class PriceRange {
   ) {
   }
 }
+
+@Pipe({
+  name: 'brandFilter',
+  pure: false
+})
+export class BrandPipe implements PipeTransform {
+  transform(products: any[], filter: any[]): any {
+    if (!products || !filter || !filter.length) {
+      return products;
+    }
+    return products.filter(product => filter.indexOf(product.brand) > -1);
+  }
+}
+@Pipe({
+  name: 'flatFilter',
+  pure: false
+})
+export class MyFlatPipe implements PipeTransform {
+  transform(products: any[]): any {
+    if (!products) {
+      return [];
+    }
+    return products.map(entry => {
+      const newProducts = Object.assign({}, entry);
+      entry.filters.forEach(element => {
+        Object.assign(newProducts, element);
+      });
+      return newProducts;
+    });
+  }
+}
+
 @Component({
   selector: 'app-products-view',
   templateUrl: './products-view.component.html',
@@ -24,6 +56,8 @@ export class ProductsViewComponent implements OnInit {
   public promotions;
   objectKeys = Object.keys;
   public userFilters = [];
+
+  filterargs = ['Earth corp.', 'Mars corp.'];
 
   constructor(private data: DataService) {
   }
@@ -45,15 +79,12 @@ export class ProductsViewComponent implements OnInit {
     // routing --> navigate to product component
   }
 
-  onCheckboxChange(event: IChangeCheckboxEventArgs) {
+  public onCheckboxChange(event: IChangeCheckboxEventArgs) {
     event.checked ? this.userFilters.push(event.checkbox.name) :
       this.userFilters = this.userFilters.filter(x => x !== event.checkbox.name);
-
-    this.applyFilters(this.userFilters);
+    // update filters
   }
 
-  applyFilters(userFilters: string[]): any {
-    userFilters.forEach(elem => this.categoryProductsData.filter(x => x.contains(elem)));
-  }
+
 }
 
