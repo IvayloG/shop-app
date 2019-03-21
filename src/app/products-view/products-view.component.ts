@@ -1,42 +1,11 @@
 import { DataService } from './../services/data.service';
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SliderType, IChangeCheckboxEventArgs } from 'igniteui-angular';
 class PriceRange {
   constructor(
     public lower: number,
     public upper: number,
   ) {
-  }
-}
-
-@Pipe({
-  name: 'brandFilter',
-  pure: false
-})
-export class BrandPipe implements PipeTransform {
-  transform(products: any[], filter: any[]): any {
-    if (!products || !filter || !filter.length) {
-      return products;
-    }
-    return products.filter(product => filter.indexOf(product.brand) > -1);
-  }
-}
-@Pipe({
-  name: 'flatFilter',
-  pure: false
-})
-export class MyFlatPipe implements PipeTransform {
-  transform(products: any[]): any {
-    if (!products) {
-      return [];
-    }
-    return products.map(entry => {
-      const newProducts = Object.assign({}, entry);
-      entry.filters.forEach(element => {
-        Object.assign(newProducts, element);
-      });
-      return newProducts;
-    });
   }
 }
 
@@ -57,13 +26,14 @@ export class ProductsViewComponent implements OnInit {
   objectKeys = Object.keys;
   public userFilters = [];
 
-  filterargs = ['Earth corp.', 'Mars corp.'];
+  brandFilterArgs = [];
+  colorFilterArgs = [];
+  promoFilterArgs = [];
 
   constructor(private data: DataService) {
   }
 
   public ngOnInit(): void {
-    //this.categoryProductsData = this.data.GetITProducts(); // this.data.getPromoProducts() .GetITProducts();
     this.categoryProductsData = this.data.getDummyData();
     this.filterGroups = this.data.getFiltersForProductCategory('IT');
 
@@ -79,12 +49,57 @@ export class ProductsViewComponent implements OnInit {
     // routing --> navigate to product component
   }
 
+  // update filters
   public onCheckboxChange(event: IChangeCheckboxEventArgs) {
-    event.checked ? this.userFilters.push(event.checkbox.name) :
-      this.userFilters = this.userFilters.filter(x => x !== event.checkbox.name);
-    // update filters
+    if (event.checked) {
+      // TODO: remove temp patch
+      switch (event.checkbox.name) {
+        case 'Earth corp.':
+        case 'Mars corp.':
+        case 'Great corp.':
+          this.brandFilterArgs.push(event.checkbox.name);
+          break;
+        case 'black':
+        case 'white':
+          this.colorFilterArgs.push(event.checkbox.name);
+          break;
+        case 'Hot Sale':
+        case 'Limited':
+        case 'Today\'s offer':
+          this.promoFilterArgs.push(event.checkbox.name);
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (event.checkbox.name) {
+        case 'Earth corp.':
+        case 'Mars corp.':
+        case 'Great corp.':
+          const index = this.brandFilterArgs.indexOf(event.checkbox.name, 0);
+          if (index > -1) {
+            this.brandFilterArgs.splice(index, 1);
+          }
+          break;
+        case 'black':
+        case 'white':
+          const i = this.brandFilterArgs.indexOf(event.checkbox.name, 0);
+          if (i > -1) {
+            this.brandFilterArgs.splice(i, 1);
+          }
+          break;
+        case 'Hot Sale':
+        case 'Limited':
+        case 'Today\'s offer':
+          const indx = this.brandFilterArgs.indexOf(event.checkbox.name, 0);
+          if (indx > -1) {
+            this.brandFilterArgs.splice(indx, 1);
+          }
+          break;
+        default:
+          break;
+      }
+    }
   }
-
-
 }
 

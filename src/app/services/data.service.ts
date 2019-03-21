@@ -177,7 +177,7 @@ export class DataService {
       shortDescription: 'the quick brown fox jumped over the lazy dog',
       icons: ['favorite', 'bookmark', 'share'],
       filters: [
-        { brand: 'Great corp' },
+        { brand: 'Great corp.' },
         { color: 'black' },
         { promotion: 'Limited' }
       ],

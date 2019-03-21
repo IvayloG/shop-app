@@ -1,12 +1,12 @@
 import { DataService } from './services/data.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-
+import { Router } from '@angular/router';
 import { routes } from './app-routing.module';
 
-import { IgxNavigationDrawerComponent, ButtonGroupAlignment, IButtonGroupEventArgs,
-  IgxButtonGroupComponent } from 'igniteui-angular';
+import {
+  IgxNavigationDrawerComponent, ButtonGroupAlignment, IButtonGroupEventArgs,
+  IgxButtonGroupComponent
+} from 'igniteui-angular';
 interface IButton {
   ripple?: string;
   label?: string;
@@ -28,13 +28,13 @@ class Button {
   private icon: string;
 
   constructor(obj?: IButton) {
-      this.ripple = obj.ripple || 'gray';
-      this.label = obj.label;
-      this.selected = obj.selected || false;
-      this.togglable = obj.togglable;
-      this.disabled = obj.disabled || false;
-      this.color = obj.color;
-      this.icon = obj.icon;
+    this.ripple = obj.ripple || 'gray';
+    this.label = obj.label;
+    this.selected = obj.selected || false;
+    this.togglable = obj.togglable;
+    this.disabled = obj.disabled || false;
+    this.color = obj.color;
+    this.icon = obj.icon;
   }
 }
 
@@ -56,8 +56,8 @@ export class AppComponent implements OnInit {
           productName: string,
           productSKU: string,
           color: string
-        } []
-      } []
+        }[]
+      }[]
     }[]
   }[] = [];
 
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
   }> = [];
   @ViewChild(IgxNavigationDrawerComponent) public navdrawer: IgxNavigationDrawerComponent;
   @ViewChild('ButtonGroup')
-private buttonGroup: IgxButtonGroupComponent;
+  private buttonGroup: IgxButtonGroupComponent;
 
 
   constructor(public router: Router, private shopData: DataService) {
@@ -96,21 +96,21 @@ private buttonGroup: IgxButtonGroupComponent;
     //   });
 
 
-      this.categories = [
-        new Button({
-          label: this.data[0].category[0].name
-        }),
-        new Button({
-          label: this.data[0].category[1].name
-        })
-        // ,
-        // new Button({
-        //     label: 'PHOTO & VIDEO',
-        //     selected: true
-        // }),
-        // new Button({
-        //     label: 'IT'
-        // })
+    this.categories = [
+      new Button({
+        label: this.data[0].category[0].name
+      }),
+      new Button({
+        label: this.data[0].category[1].name
+      })
+      // ,
+      // new Button({
+      //     label: 'PHOTO & VIDEO',
+      //     selected: true
+      // }),
+      // new Button({
+      //     label: 'IT'
+      // })
     ];
 
   }
