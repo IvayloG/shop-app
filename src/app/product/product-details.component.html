@@ -17,9 +17,11 @@
   <igx-tabs>
     <igx-tabs-group label="SPECS">
       <igx-list>
-        <igx-list-item *ngFor="let specName of specNames; let i = index">
-          <span class="spec">{{specName}}{{':'}}</span>
-          <span>{{specValues[i]}}</span>
+        <igx-list-item class="spec-item" *ngFor="let specName of specNames; let i = index">
+          <div class="spec-item-inner">
+            <span class="spec">{{specName}}{{':'}}</span>
+            <span>{{specValues[i]}}</span>
+          </div>
         </igx-list-item>
       </igx-list>
     </igx-tabs-group>

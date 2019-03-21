@@ -47,16 +47,21 @@ div.prod-details-main > igx-icon {
   text-transform: capitalize;
 }
 
-.igx-list__item-content, .igx-list__item-content:active {
-  // display: flex;
-  // position: relative;
-  // flex-flow: row wrap;
-  // padding: 0.5rem 1rem;
-  // min-height: 3rem;
-  // color: rgba(255, 255, 255, 0.74);
-  // background-color: #222;
-  // z-index: 2;
-  // border-radius: 0px;
+::ng-deep {
+  .spec-item:nth-child(odd) > .igx-list__item-content {
+        background-color: rgb(18, 72, 97);
+  }
+}
+.spec-item-inner {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0px 8px;
+}
+
+.tabs-wrap {
+  height: 500px;
+  overflow: auto;
 }
 
 
