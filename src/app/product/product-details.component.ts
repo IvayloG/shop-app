@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   public objectKeys = Object.keys;
-  public product;
+  public product: any[];
   private sub: any;
   public id: number;
   public price = 300;
@@ -29,7 +29,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
 
       // Get features for SPEC details
-      const product = this.data.getProductByID(1);
+      const product = this.data.getProductByID(this.id);
       this.specs = product.features;
       Object.keys(this.specs).forEach(key => {
         this.specNames.push(key);

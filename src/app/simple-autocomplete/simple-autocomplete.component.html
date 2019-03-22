@@ -7,7 +7,7 @@
       </igx-input-group>
       <igx-drop-down #productsPanel maxHeight="300px">
         <igx-drop-down-item *ngFor="let product of products | simpleAutocompleteStartsWith:productSelected"
-          [value]="product" routerLink="../{{this.data.getFilteredProductCategory(product)}}/{{product}}">
+          [value]="product" routerLink="../{{this.data.getFilteredProductCategory(product)}}/{{this.data.getFilteredProductID(product)}}">
             {{product}}
         </igx-drop-down-item>
       </igx-drop-down>

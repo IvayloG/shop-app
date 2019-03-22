@@ -37,21 +37,21 @@ export class DataService {
             name: 'smart',
             products: [
               {
-                productName: 'smartwatch1',
+                productName: 'Smart Basic Essential',
                 productSKU: 'sw1',
                 color: 'black',
                 price: 99.99,
                 imageUrl: '../../assets/products/images/smartwatch-1.jpg'
               },
               {
-                productName: 'smartwatch2',
+                productName: 'Smart Advantage',
                 productSKU: 'sw2',
                 color: 'black',
                 price: 99.99,
                 imageUrl: '../../assets/products/images/smartwatch-2.jpg'
               },
               {
-                productName: 'smartwatch3',
+                productName: 'Smart Mars Watch',
                 productSKU: 'sw3',
                 color: 'white',
                 price: 99.99,
@@ -95,7 +95,7 @@ export class DataService {
     {
       id: 1,
       category: 'IT',
-      productName: 'smartwatch1',
+      productName: 'Smart Basic Essential',
       productSKU: 'sw1',
       price: 99.99,
       imageUrl: '../../assets/products/images/smartwatch-3.jpg',
@@ -103,7 +103,7 @@ export class DataService {
       icons: ['favorite', 'bookmark', 'share'],
       filters: [
         { brand: 'Earth corp.' },
-        { color: 'black' },
+        { color: 'white' },
         { promotion: 'Hot Sale' }
       ],
       features: {
@@ -170,7 +170,7 @@ export class DataService {
     {
       id: 2,
       category: 'IT',
-      productName: 'smartwatch2',
+      productName: 'Smart Advantage',
       productSKU: 'sw2',
       price: 199.99,
       imageUrl: '../../assets/products/images/smartwatch-4.jpg',
@@ -184,12 +184,12 @@ export class DataService {
       features: {
         model: 'first-ever barely works',
         OS: 'Tizen OS 4.0',
-        batteryLife: '472 mAh',
+        batteryLife: '560 mAh',
         RAM: '768 MB',
         storage: '4 GB',
-        processor: 'Dual core',
-        displayType: 'Super AMOLED',
-        displaySize: '3.5 CM',
+        processor: 'Triple core',
+        displayType: 'Giga AMOLED',
+        displaySize: '3.7 CM',
         resolution: '454X454',
         memoryCardSlot: '',
         GPS: true,
@@ -201,8 +201,8 @@ export class DataService {
         heartRateMonitor: true,
         distance: true,
         burnedCalories: true,
-        weight: '46 g',
-        dimension: '46.5X46.5X10.6 mm'
+        weight: '43 g',
+        dimension: '49.5X49.5X11.6 mm'
       },
       reviews: [
         {
@@ -245,7 +245,7 @@ export class DataService {
     {
       id: 3,
       category: 'IT',
-      productName: 'smartwatch3',
+      productName: 'Smart Mars Watch',
       productSKU: 'sw3',
       price: 399.99,
       imageUrl: '../../assets/products/images/smartwatch-5.jpg',
@@ -253,7 +253,7 @@ export class DataService {
       icons: ['favorite', 'bookmark', 'share'],
       filters: [
         { brand: 'Mars corp.' },
-        { color: 'white' },
+        { color: 'black' },
         { promotion: 'Today\'s offer' }
       ],
       features: {
@@ -342,6 +342,13 @@ export class DataService {
   public getFilteredProductCategory(filteredProduct: string) {
     const category = this.dummyProducts.filter(product => product.productName === filteredProduct).map(x => x.category);
     return category[0];
+  }
+
+  public getFilteredProductID(filteredProduct: string) {
+    const id = this.dummyProducts.filter(product => product.productName === filteredProduct).map(x => x.id);
+    console.log('filteredProduct: ', filteredProduct);
+    console.log('id[0]: ', id[0]);
+    return id[0];
   }
 
   public getFiltersForProductCategory(category: string): any {

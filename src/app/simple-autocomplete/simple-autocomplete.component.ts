@@ -20,15 +20,15 @@ export class SimpleAutocompleteComponent implements OnInit{
     }
 
     ngOnInit() {
-      this.products = this.data.dummyProducts.map(product => product.productName);
+      this.products = this.data.dummyProducts.map(product => product.productName); // TODO: update to use id
     }
 
     public handleProductSelected(event: AutocompleteItemSelectionEventArgs) {
       const selectedProduct = this.data.getFilteredProduct(event.value)[0].productName;
       const filteredProdCategory = this.data.getFilteredProductCategory(event.value);
 
-  // this.router.navigate([filteredProdCategory, selectedProduct]); // ../IT/smartwatch1
-   // this.router.navigate([filteredProdCategory, selectedProduct], {relativeTo: this.route} ); // home/IT/smartwatch1
+  // this.router.navigate([filteredProdCategory, selectedProduct]); // ../IT/Basic Essential
+   // this.router.navigate([filteredProdCategory, selectedProduct], {relativeTo: this.route} ); // home/IT/Basic Essential
     }
 }
 

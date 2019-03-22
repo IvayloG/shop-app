@@ -26,10 +26,6 @@ export const routes: Routes = [
     ]
   },
   { path: 'simple-autocomplete', component: SimpleAutocompleteComponent, data: { text: 'Simple Autocomplete' } },
-  // { path: 'chip', component: ChipComponent, data: { text: 'Chip' } },
-  // { path: 'tabs', component: TabsComponent, data: { text: 'Tabs' } },
-
-
   { path: '**', component: PageNotFoundComponent } // must always be last
 ];
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { DataService } from './../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SliderType, IChangeCheckboxEventArgs } from 'igniteui-angular';
@@ -30,7 +31,7 @@ export class ProductsViewComponent implements OnInit {
   colorFilterArgs = [];
   promoFilterArgs = [];
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService, public router: Router ) {
   }
 
   public ngOnInit(): void {
@@ -45,8 +46,9 @@ export class ProductsViewComponent implements OnInit {
     this.priceRange = new PriceRange(200, 800);
   }
 
-  public showProductDetails() {
-    // routing --> navigate to product component
+  public showProductDetails(id: number) {
+       // routing --> navigate to product component
+       this.router.navigateByUrl(this.categoryProductsData.filter(prod => prod.id === id));
   }
 
   // update filters
